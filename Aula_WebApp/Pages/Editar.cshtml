@@ -1,0 +1,29 @@
+﻿@page
+@model Aula_WebApp.Pages.EditarModel
+@{
+    ViewData["Title"] = "Editar";
+
+    dynamic categorias = @Model.service.GetCategorias();
+    dynamic dados = @Model.service.GetOne(1);
+}
+<div>
+    <h1>Editar:</h1>
+    <div asp-validation-summary="All"></div>
+    <form name="registrar" method="post">
+
+        <p class="text-lg-left">Título</p>
+        <input type="text" name="titulo" required class="form-control" value="@dados.Titulo"/><br />
+        <p class="text-lg-left">Autor</p>
+        <input type="text" name="autor" class="form-control" value="@dados.Autor"/><br />
+        <p class="text-lg-left">Categoria</p>
+        <select name="categoria" class="form-control">
+            @foreach (var item in categorias)
+            {
+                <option value="@item.Categoria">@item.Categoria</option>
+            }
+        </select><br />
+        <p class="text-lg-left">Preço</p>
+        <input type="text" name="preco" class="form-control" value="@dados.Preco"/><br />
+        <input type="submit" class="btn btn-success" value="Editar" />
+    </form>
+</div>

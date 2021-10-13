@@ -1,0 +1,35 @@
+﻿@page
+@model Aula_WebApp.Pages.LivrosModel
+@{
+    ViewData["Title"] = "Livros";
+    dynamic livros = Model.service.GetAll();
+}
+<div>
+    <h1>Lista de Livros</h1>
+    <table class="table mt-5">
+        <thead>
+            <tr class="thead-light">
+                <th>ID</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in livros)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td><a href="/Editar?id=@item.Id" class="btn-link">@item.Titulo</a></td>
+                    <td>@item.Autor</td>
+                    <td>@item.Categoria</td>
+                    <td>@item.Preco KZ</td>
+                    <td><a href="/Deletar?id=@item.Id" class="btn btn-danger">Apagar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<a href="/Registrar" class="btn btn-primary">Registrar</a>

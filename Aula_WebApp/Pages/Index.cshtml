@@ -1,0 +1,16 @@
+﻿@page
+@using Microsoft.AspNetCore.Http;
+@model IndexModel 
+@{
+    ViewData["Title"] = "Home page";
+    string mb = "Olá, Manuel Bento";
+    if (HttpMethods.IsPost(Request.Method))
+    {
+        Model.OnPost();
+    }
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">@mb</a>.</p>
+</div>
